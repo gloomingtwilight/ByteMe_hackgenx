@@ -12,20 +12,38 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static('public'));
 
 
-app.get('/register',(req,res)=>{
-    res.render('register'); 
+app.post('/register', async (req, res) => {
+    const { username, email, password } = req.body;
+
+    try {
+        // Check if the user already exists
+        let user = await userModel.findOne({ email });
+
+        if (!user) {
+            // If the user doesn't exist, create a new user
+            user = await userModel.create({
+                username: username,
+                email: email,
+                password: password,
+            });
+        }
+
+        if (username === 'abha' && password === '1234' && email === 'dhandreabha1@gmail.com') {
+            // Redirect to admin dashboard
+            res.render('ad_dashboard', { user }); // Pass user data to the admin dashboard
+        } else if (user.password === password) {
+            // Redirect to the dashboard if credentials are valid
+            res.render('dashboard', { user }); // Pass user data to the dashboard
+        } else {
+            // If credentials are invalid, redirect back to login with an error
+            res.redirect('/?error=Invalid credentials');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred');
+    }
 });
 
-app.post('/register',async(req,res)=>{
-
-   const{username,email,password}=req.body; 
-   const newUser=await userModel.create({
-    username:username,
-    email:email,
-    password:password
-})
-   res.send(newUser); 
-    });
 
 
 app.get('/',(req,res)=>{
@@ -54,3 +72,4 @@ app.get('/profile',(req,res)=>{
 app.post('/dashboard',(req,res)=>{
     res.render('dashboard'); 
 });
+

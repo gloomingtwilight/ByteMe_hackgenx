@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Premedix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <style>
+        .container-fluid{
+            margin-top: 5%;
+            width: 100%;
+            background-color: #b2e66f6e;
+        }
+        .navbar{
+            width: 100%;
+            background-color: #69cc0d6e;
+            padding: 2%;
+        }
+    </style>
+    <div class="container">  
+          <div class="navbar">
+                        <h4 class="mb-0">Admin Panel</h4>
+                        <div class="user-profile dropdown">
+                            <button class="btn btn-link dropdown-toggle text-dark" type="button" id="userDropdown" data-bs-toggle="dropdown">
+                                <i class='bx bx-user-circle'></i> Admin User
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-9 col-lg-10 main-content">
+            
+                <div class="row g-4 mb-4">
+                    <div class="col-md-3">
+                        <div class="dashboard-card stat-card p-4">
+                            <h6 class="text-muted">Total Departments</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="dashboard-card stat-card primary p-4">
+                            <h6 class="text-muted">Blood Bank Status</h6>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <div class="dashboard-card stat-card warning p-4">
+                            <h6 class="text-muted">Equipment Status</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="dashboard-card stat-card danger p-4">
+                            <h6 class="text-muted">System Alerts</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="dashboard-card p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="mb-0">Department Management</h5>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class='bx bx-plus'></i> Add Department
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="dashboard-card p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="mb-0">Blood Bank Status</h5>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class='bx bx-plus'></i> Add Stock
+                                </button>
+                            </div>
+                            <div class="list-group list-group-flush">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="dashboard-card p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h5 class="mb-0">Equipment Maintenance</h5>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class='bx bx-plus'></i> Add Equipment
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="dashboard-card p-4">
+                            <h5 class="mb-4">Recent Activities</h5>
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">New Department Added</h6>
+                                            <small class="text-muted">Pediatrics department created</small>
+                                        </div>
+                                        <small class="text-muted">2 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Blood Stock Updated</h6>
+                                            <small class="text-muted">A+ blood group stock replenished</small>
+                                        </div>
+                                        <small class="text-muted">4 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">New User Registration</h6>
+                                            <small class="text-muted">5 new staff members registered</small>
+                                        </div>
+                                        <small class="text-muted">6 hours ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    </script>
+</body>
+</html>
