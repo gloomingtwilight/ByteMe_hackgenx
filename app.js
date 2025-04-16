@@ -50,6 +50,7 @@ app.get('/',(req,res)=>{
     res.render('index'); 
 }
 ); 
+
 app.post('/get-form-data',(req,res)=>{
     console.log(req.body);
     res.send('data recieved') 
@@ -58,11 +59,11 @@ app.post('/get-form-data',(req,res)=>{
 
 
 
-app.listen(3000)    
-app.get('/about',(req,res)=>{
-    res.send('The about page'); 
-}
-); 
+// app.listen(3000)    
+// app.get('/about',(req,res)=>{
+//     res.send('The about page'); 
+// }
+// ); 
 
 app.get('/profile',(req,res)=>{
     res.send('The profile page'); 
@@ -80,4 +81,70 @@ app.get('/bloodbank', (req, res) => {
 
 app.get('/alerts', (req, res) => {
     res.render('alert'); // Render the alert.ejs file
+});
+
+app.get('/ad_dashboard', async (req, res) => {
+    try {
+        const loggedInUser = { username: 'AdminUser', email: 'admin@example.com' }; // Example user data
+        const users = await userModel.find(); // Fetch all users from the database
+        res.render('ad_dashboard', { user: loggedInUser, users }); // Pass users to the EJS file
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.post('/add-user', async (req, res) => {
+    const { loggedInUser, newUserName, newUserEmail, newUserRole } = req.body;
+
+    try {
+        // Save the new user to the database
+        const newUser = await userModel.create({
+            username: newUserName,
+            email: newUserEmail,
+            role: newUserRole,
+            addedBy: loggedInUser, // Track who added the user
+        });
+
+        console.log(`New user added by ${loggedInUser}:`, newUser);
+
+        // Redirect back to the admin dashboard
+        res.redirect('/ad_dashboard');
+    } catch (error) {
+        console.error('Error adding user:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.listen(4000, () => {
+    console.log('Server is running on http://localhost:4000');
+});
+
+
+app.get('/ad_dashboard', async (req, res) => {
+    try {
+        const loggedInUser = { username: 'AdminUser', email: 'admin@example.com' }; // Example user data
+        const users = await userModel.find(); // Fetch all users from the database
+        res.render('ad_dashboard', { user: loggedInUser, users }); // Pass users to the EJS file
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+app.post('/edit-user', async (req, res) => {
+    const { userId, username, role, department, status } = req.body;
+
+    try {
+        await userModel.findByIdAndUpdate(userId, {
+            username,
+            role,
+            department,
+            status,
+        });
+        res.redirect('/ad_dashboard');
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).send('Internal Server Error');
+    }
 });

@@ -76,8 +76,10 @@
                     <i class="fas fa-plus"></i> Add Department
                 </button>
                 <button class="action-button">
-                    <i class="fas fa-file-export"></i> Generate Report
+                    <i class="fas fa-plus"></i> Add Equipment
                 </button>
+                
+                    
                 <button class="action-button">
                     <i class="fas fa-calendar-alt"></i> Schedule Maintenance
                 </button>
@@ -86,7 +88,84 @@
                 </a>
             </section>
 
-            <section class="department-grid">
+
+            <section class="quick-actions" id="quick-actions">
+                <form action="/add-user" method="POST" class="add-user-form">
+                    <input type="hidden" name="loggedInUser" value="<%= user.username %>"> <!-- Pass logged-in user -->
+                    <input type="text" name="newUserName" placeholder="Enter New User Name" required>
+                    <input type="email" name="newUserEmail" placeholder="Enter New User Email" required>
+                    <input type="text" name="newUserRole" placeholder="Enter New User Role" required>
+                    <button type="submit" class="action-button">
+                        <i class="fas fa-plus"></i> Add User
+                    </button>
+                </form>
+            </section>
+
+
+            <section class="user-data-table" id="user-data-table">
+                <h3>Registered Users</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userTableBody">
+                        <section class="user-management" id="user-management">
+                            <table class="user-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Department</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% users.forEach(user => { %>
+                                        <tr>
+                                            <td><%= user.username %></td>
+                                            <td><%= user.role %></td>
+                                            <td><%= user.department || 'N/A' %></td>
+                                            <td><%= user.status || 'Active' %></td>
+                                            <td>
+                                                <button class="edit-button" onclick="editUser('<%= user._id %>')">Edit</button>
+                                            </td>
+                                        </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </section>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Edit User Modal -->
+<div id="editUserModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Edit User</h2>
+        <form id="editUserForm" action="/edit-user" method="POST">
+            <input type="hidden" name="userId" id="editUserId">
+            <label for="editUserName">Name:</label>
+            <input type="text" name="username" id="editUserName" required>
+            <label for="editUserRole">Role:</label>
+            <input type="text" name="role" id="editUserRole" required>
+            <label for="editUserDepartment">Department:</label>
+            <input type="text" name="department" id="editUserDepartment">
+            <label for="editUserStatus">Status:</label>
+            <select name="status" id="editUserStatus">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</div>
+            <!-- <section class="department-grid">
                 <div class="department-card">
                     <h3>Emergency Department</h3>
                     <div class="department-stats">
@@ -108,7 +187,7 @@
                         <span>Status: Active</span>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
             <!-- <section class="blood-bank-container" id="blood-bank-container">
                 <div class="blood-stock-grid">
@@ -149,38 +228,7 @@
                 </div>
             </section>
 
-            <section class="user-management" id="user-management">
-                <table class="user-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Department</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+           
 
             <section class="activity-timeline">
                 <div class="activity-item">
@@ -219,6 +267,7 @@
             </section>
         </main>
     </div>
+    
 
     <script>
         function toggleAlertPanel() {
@@ -262,6 +311,25 @@
 
         // periodic refresh (every 5 minutes)
         setInterval(fetchAlerts, 300000);
-    </script>
+        
+       
+    function editUser(userId) {
+        const user = <%- JSON.stringify(users) %>.find(u => u._id === userId);
+        if (user) {
+            document.getElementById('editUserId').value = user._id;
+            document.getElementById('editUserName').value = user.username;
+            document.getElementById('editUserRole').value = user.role;
+            document.getElementById('editUserDepartment').value = user.department || '';
+            document.getElementById('editUserStatus').value = user.status || 'Active';
+            document.getElementById('editUserModal').style.display = 'block';
+        }
+    }
+
+    function closeModal() {
+        document.getElementById('editUserModal').style.display = 'none';
+    }
+</script>
+
+  
 </body>
 </html>
