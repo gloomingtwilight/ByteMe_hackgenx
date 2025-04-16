@@ -55,4 +55,3 @@ if (user) {
 function closeModal() {
 document.getElementById('editUserModal').style.display = 'none';
 }
-

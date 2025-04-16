@@ -83,15 +83,9 @@ app.get('/alerts', (req, res) => {
     res.render('alert'); // Render the alert.ejs file
 });
 
-app.get('/ad_dashboard', async (req, res) => {
-    try {
-        const loggedInUser = { username: 'AdminUser', email: 'admin@example.com' }; // Example user data
-        const users = await userModel.find(); // Fetch all users from the database
-        res.render('ad_dashboard', { user: loggedInUser, users }); // Pass users to the EJS file
-    } catch (error) {
-        console.error('Error fetching users:', error);
-        res.status(500).send('Internal Server Error');
-    }
+app.get('/ad_dashboard', (req, res) => {
+    const loggedInUser = { username: 'AdminUser', email: 'admin@example.com' }; // Example user data
+    res.render('ad_dashboard', { user: loggedInUser });
 });
 
 app.post('/add-user', async (req, res) => {
@@ -118,33 +112,4 @@ app.post('/add-user', async (req, res) => {
 
 app.listen(4000, () => {
     console.log('Server is running on http://localhost:4000');
-});
-
-
-app.get('/ad_dashboard', async (req, res) => {
-    try {
-        const loggedInUser = { username: 'AdminUser', email: 'admin@example.com' }; // Example user data
-        const users = await userModel.find(); // Fetch all users from the database
-        res.render('ad_dashboard', { user: loggedInUser, users }); // Pass users to the EJS file
-    } catch (error) {
-        console.error('Error fetching users:', error);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
-app.post('/edit-user', async (req, res) => {
-    const { userId, username, role, department, status } = req.body;
-
-    try {
-        await userModel.findByIdAndUpdate(userId, {
-            username,
-            role,
-            department,
-            status,
-        });
-        res.redirect('/ad_dashboard');
-    } catch (error) {
-        console.error('Error updating user:', error);
-        res.status(500).send('Internal Server Error');
-    }
 });
