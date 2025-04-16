@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Storage Management - PREMEDIX</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/bloodbank.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                PREMEDIX
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blood Storage Management Section -->
+    <div class="container blood-storage-container">
+        <h1 class="text-center mb-5">Blood Storage Management</h1>
+        
+        <!-- Storage Types Grid -->
+        <div class="row">
+            <!-- Normal Storage (8 hours) -->
+            <div class="col-md-4">
+                <div class="storage-card normal-storage">
+                    <h3>Normal Storage</h3>
+                    <p class="storage-info">Viable for 8 hours</p>
+                    <div class="blood-inventory">
+                        <h4>Available Blood Units</h4>
+                        <div class="blood-group-grid">
+                            <div class="blood-unit" data-group="A+">
+                                <span class="group">A+</span>
+                                <span class="quantity">15</span>
+                                <div class="expiry-warning" data-expires-in="2">Expires in 2 hours</div>
+                            </div>
+                            <div class="blood-unit" data-group="B+">
+                                <span class="group">B+</span>
+                                <span class="quantity">8</span>
+                                <div class="expiry-warning" data-expires-in="4">Expires in 4 hours</div>
+                            </div>
+                            <!-- Add more blood groups as needed -->
+                        </div>
+                        <button class="btn btn-warning mt-3 transfer-btn" data-storage="normal">
+                            Transfer Expiring Units
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plasma Storage (42 days) -->
+            <div class="col-md-4">
+                <div class="storage-card plasma-storage">
+                    <h3>Plasma Storage</h3>
+                    <p class="storage-info">Viable for 42 days</p>
+                    <div class="blood-inventory">
+                        <h4>Available Plasma Units</h4>
+                        <div class="blood-group-grid">
+                            <div class="blood-unit" data-group="A+">
+                                <span class="group">A+</span>
+                                <span class="quantity">25</span>
+                                <div class="expiry-warning" data-expires-in="5">Expires in 5 days</div>
+                            </div>
+                            <div class="blood-unit" data-group="O-">
+                                <span class="group">O-</span>
+                                <span class="quantity">12</span>
+                                <div class="expiry-warning" data-expires-in="10">Expires in 10 days</div>
+                            </div>
+                            <!-- Add more blood groups as needed -->
+                        </div>
+                        <button class="btn btn-warning mt-3 transfer-btn" data-storage="plasma">
+                            Transfer Expiring Units
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Frozen Storage -->
+            <div class="col-md-4">
+                <div class="storage-card frozen-storage">
+                    <h3>Frozen Storage</h3>
+                    <p class="storage-info">Long-term storage</p>
+                    <div class="blood-inventory">
+                        <h4>Available Frozen Units</h4>
+                        <div class="blood-group-grid">
+                            <div class="blood-unit" data-group="AB+">
+                                <span class="group">AB+</span>
+                                <span class="quantity">18</span>
+                                <div class="expiry-warning" data-expires-in="30">Expires in 30 days</div>
+                            </div>
+                            <div class="blood-unit" data-group="O+">
+                                <span class="group">O+</span>
+                                <span class="quantity">20</span>
+                                <div class="expiry-warning" data-expires-in="45">Expires in 45 days</div>
+                            </div>
+                            <!-- Add more blood groups as needed -->
+                        </div>
+                        <button class="btn btn-warning mt-3 transfer-btn" data-storage="frozen">
+                            Transfer Expiring Units
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transfer Modal -->
+    <div class="modal fade" id="transferModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Transfer Blood Units</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="transferForm">
+                        <div class="mb-3">
+                            <label class="form-label">Select Blood Group</label>
+                            <select class="form-select" required>
+                                <option value="">Choose blood group</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Transfer to Storage</label>
+                            <select class="form-select" required>
+                                <option value="">Choose storage type</option>
+                                <option value="normal">Normal Storage</option>
+                                <option value="plasma">Plasma Storage</option>
+                                <option value="frozen">Frozen Storage</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Quantity</label>
+                            <input type="number" class="form-control" min="1" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="confirmTransfer">Confirm Transfer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/bloodbank.js"></script>
+</body>
+</html>

@@ -1,4 +1,3 @@
-/* Admin Dashboard Styles */
 :root {
     --primary-color: #2c3e50;
     --secondary-color: #3498db;
@@ -14,7 +13,6 @@
     --nav-active: #1e8449;
 }
 
-/* Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +25,6 @@ body {
     color: var(--primary-color);
 }
 
-/* Dashboard Layout */
 .dashboard-container {
     display: flex;
     flex-direction: column;
@@ -35,7 +32,6 @@ body {
     padding: 2rem;
 }
 
-/* Top Navigation */
 .top-nav {
     display: flex;
     justify-content: space-between;
@@ -46,6 +42,7 @@ body {
     color: var(--white);
     box-shadow: var(--shadow);
     border-radius: 8px;
+    position: relative;
 }
 
 .nav-logo {
@@ -64,6 +61,7 @@ body {
 .nav-menu {
     display: flex;
     gap: 1.5rem;
+    align-items: center;
 }
 
 .nav-menu-item {
@@ -86,12 +84,63 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Main Content */
+.alert-button {
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: var(--warning-color);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.alert-button:hover {
+    background-color: #e67e22;
+    transform: translateY(-2px);
+}
+
+.alert-button i {
+    font-size: 1.2rem;
+}
+
+.alert-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--danger-color);
+    color: var(--white);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .main-content {
     flex: 1;
 }
 
-/* Dashboard Overview Cards */
 .overview-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -124,7 +173,6 @@ body {
     color: var(--primary-color);
 }
 
-/* Department Management */
 .department-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -144,7 +192,6 @@ body {
     margin-top: 1rem;
 }
 
-/* Blood Bank Management */
 .blood-bank-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -164,7 +211,6 @@ body {
     background-color: var(--light-gray);
 }
 
-/* Equipment Maintenance */
 .equipment-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -200,7 +246,6 @@ body {
     color: var(--white);
 }
 
-/* User Management */
 .user-table {
     width: 100%;
     border-collapse: collapse;
@@ -222,7 +267,6 @@ body {
     font-weight: 600;
 }
 
-/* Recent Activities */
 .activity-timeline {
     position: relative;
     padding-left: 2rem;
@@ -253,7 +297,6 @@ body {
     background-color: var(--secondary-color);
 }
 
-/* Quick Actions */
 .quick-actions {
     display: flex;
     gap: 1rem;
@@ -274,7 +317,6 @@ body {
     background-color: #2980b9;
 }
 
-/* System Monitoring */
 .monitoring-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -294,7 +336,6 @@ body {
     color: var(--primary-color);
 }
 
-/* Alert Notifications */
 .alert {
     padding: 1rem;
     border-radius: 5px;
@@ -316,7 +357,6 @@ body {
     border-left: 4px solid var(--danger-color);
 }
 
-/* Form Elements */
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -340,7 +380,6 @@ body {
     border-color: var(--secondary-color);
 }
 
-/* Buttons */
 .btn {
     padding: 0.8rem 1.5rem;
     border-radius: 5px;
@@ -368,7 +407,6 @@ body {
     background-color: #c0392b;
 }
 
-/* Loading States */
 .loading {
     position: relative;
     min-height: 200px;
@@ -393,7 +431,6 @@ body {
     }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .dashboard-container {
         padding: 1rem;
@@ -412,4 +449,107 @@ body {
     .blood-bank-container {
         grid-template-columns: 1fr;
     }
+}
+
+/* Alert Popup Panel */
+.alert-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 350px;
+    height: 100vh;
+    background-color: var(--white);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.alert-panel.active {
+    transform: translateX(0);
+}
+
+.alert-panel-header {
+    padding: 1rem;
+    background-color: var(--warning-color);
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-panel-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.close-panel {
+    background: none;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.alert-panel-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.alert-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--light-gray);
+    margin-bottom: 0.5rem;
+}
+
+.alert-item:last-child {
+    border-bottom: none;
+}
+
+.alert-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.alert-title {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.alert-time {
+    font-size: 0.8rem;
+    color: var(--dark-gray);
+}
+
+.alert-message {
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+}
+
+.alert-status {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.status-critical {
+    background-color: var(--danger-color);
+    color: var(--white);
+}
+
+.status-warning {
+    background-color: var(--warning-color);
+    color: var(--white);
+}
+
+.status-info {
+    background-color: var(--secondary-color);
+    color: var(--white);
 }

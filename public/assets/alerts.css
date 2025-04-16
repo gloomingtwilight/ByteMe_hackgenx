@@ -1,0 +1,80 @@
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .alert-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .alert-item {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn 0.3s ease-in;
+    }
+    .alert-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .alert-title {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .alert-timestamp {
+      color: #777;
+      font-size: 12px;
+    }
+    .alert-message {
+      color: #333;
+    }
+    .severity-high {
+      border-left: 4px solid #d9534f;
+    }
+    .severity-medium {
+      border-left: 4px solid #f0ad4e;
+    }
+    .severity-low {
+      border-left: 4px solid #5bc0de;
+    }
+    .severity-info {
+      border-left: 4px solid #5cb85c;
+    }
+    .no-alerts {
+      text-align: center;
+      color: #777;
+      padding: 20px;
+    }
+    .refresh-button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 10px 0 20px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }

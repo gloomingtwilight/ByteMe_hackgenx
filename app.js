@@ -73,3 +73,11 @@ app.post('/dashboard',(req,res)=>{
     res.render('dashboard'); 
 });
 
+app.get('/bloodbank', (req, res) => {
+    res.render('bloodbank'); // Render the bloodbank.ejs file
+});
+
+
+app.get('/alerts', (req, res) => {
+    res.render('alert'); // Render the alert.ejs file
+});
