@@ -3,119 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Department Dashboard - Premedix</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
-    
+    <title>Department Dashboard</title>
+    <link rel="stylesheet" href="/assets/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Dashboard</a>
-                    </li>
-                </ul>
-                <div class="d-flex">
-                    <div class="dropdown">
-                        <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown">
-                            <i class='bx bx-user-circle'></i> Department Admin
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="login.html">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
+    
+    <div class="dashboard-container">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="nav-logo">
+                <i class="fas fa-hospital"></i> Department Dashboard
             </div>
-        </div>
-    </nav>
+            <div class="nav-menu">
+                <a href="#dept-header" class="nav-menu-item active">Overview</a>
+                <a href="#staff-grid" class="nav-menu-item">Staff</a>
+                <a href="#schedule-container" class="nav-menu-item">Schedule</a>
+                <a href="#equipment-list" class="nav-menu-item">Equipment</a>
+                <a href="#queue-container" class="nav-menu-item">Queue</a>
+            </div>
+        </nav>
 
-    <div class="container mt-4">
-        <div class="department-header">
-            <h2>Department Dashboard</h2>
-            <p class="text-muted">Welcome to your department management portal</p>
-        </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Department Header -->
+            <section class="dept-header" id="dept-header">
+                <h1 class="dept-title">Emergency Department</h1>
+                <div class="dept-info">
+                    <div class="dept-stat">
+                        <i class="fas fa-users"></i>
+                        <span>25 Staff Members</span>
+                    </div>
+                    <div class="dept-stat">
+                        <i class="fas fa-bed"></i>
+                        <span>15 Available Beds</span>
+                    </div>
+                    <div class="dept-stat">
+                        <i class="fas fa-clock"></i>
+                        <span>24/7 Operation</span>
+                    </div>
+                </div>
+            </section>
 
-        <div class="row g-4">
-            <!-- Quick Stats -->
-            <div class="col-md-3">
-                <div class="card dashboard-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Staff</h5>
-                        
-                    </div>
+            <!-- Department Stats -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value"></div>
+                    <div class="stat-label">Patients Today</div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card dashboard-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Active Projects</h5>
-                        
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-value"></div>
+                    <div class="stat-label">Active Cases</div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card dashboard-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Inventory Items</h5>
-                        
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-value"></div>
+                    <div class="stat-label">Avg. Wait Time (hrs)</div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card dashboard-card">
-                    <div class="card-body">
-                        <h5 class="card-title">Budget Status</h5>
-                        
-                    </div>
+                <div class="stat-card">
+                    <div class="stat-value"></div>
+                    <div class="stat-label">Capacity</div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Recent Activities -->
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Recent Activities</h5>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <!-- Quick Actions -->
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">Quick Actions</h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-primary">
-                                <i class='bx bx-plus'></i> New Request
-                            </button>
-                            <button class="btn btn-outline-primary">
-                                <i class='bx bx-file'></i> Generate Report
-                            </button>
-                            <button class="btn btn-outline-primary">
-                                <i class='bx bx-calendar'></i> Schedule Meeting
-                            </button>
+            <!-- Staff Management -->
+            <section class="staff-grid" id="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-info">
+                        <div class="staff-avatar">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="staff-details">
+                            <h3>Dr. Sarah Johnson</h3>
+                            <div class="staff-role">Senior Physician</div>
+                            <span class="staff-status status-available">Available</span>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div class="staff-card">
+                    <div class="staff-info">
+                        <div class="staff-avatar">
+                            <i class="fas fa-user-nurse"></i>
+                        </div>
+                        <div class="staff-details">
+                            <h3>Nurse Mike Brown</h3>
+                            <div class="staff-role">Head Nurse</div>
+                            <span class="staff-status status-busy">Busy</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-info">
+                        <div class="staff-avatar">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="staff-details">
+                            <h3>Dr. Emily Chen</h3>
+                            <div class="staff-role">Resident</div>
+                            <span class="staff-status status-available">Available</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Add any dashboard-specific JavaScript here
-    </script>
+            <!-- Schedule Management -->
+            <section class="schedule-container" id="schedule-container">
+                <div class="schedule-header">
+                    <h2>Today's Schedule</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Schedule
+                    </button>
+                </div>
+                <div class="schedule-grid">
+                    <div class="schedule-item">
+                        <div class="schedule-time">08:00 - 12:00</div>
+                        <div class="schedule-details">
+                            <strong>Morning Shift:</strong>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">12:00 - 16:00</div>
+                        <div class="schedule-details">
+                            <strong>Afternoon Shift:</strong>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="schedule-time">16:00 - 20:00</div>
+                        <div class="schedule-details">
+                            <strong>Evening Shift:</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Equipment Status -->
+            <section class="equipment-status" id="equipment-list">
+                <div class="equipment-card">
+                    <div class="equipment-header">
+                        <div class="equipment-name">MRI Machine</div>
+                        <span class="equipment-status-indicator status-available">Operational</span>
+                    </div>
+                    <p>Last Maintenance: </p>
+                </div>
+                <div class="equipment-card">
+                    <div class="equipment-header">
+                        <div class="equipment-name">X-Ray Machine</div>
+                        <span class="equipment-status-indicator status-maintenance">Under Maintenance</span>
+                    </div>
+                    <p>Next Available: </p>
+                </div>
+                <div class="equipment-card">
+                    <div class="equipment-header">
+                        <div class="equipment-name">CT Scanner</div>
+                        <span class="equipment-status-indicator status-available">Operational</span>
+                    </div>
+                    <p>Last Maintenance: </p>
+                </div>
+            </section>
+
+            <!-- Patient Queue -->
+            <section class="queue-container" id="queue-container">
+                <div class="queue-header">
+                    <h2>Current Queue</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Add Patient
+                    </button>
+                </div>
+                <ul class="queue-list">
+                    <li class="queue-item">
+                        <div class="queue-info">
+                            <span class="queue-number">#001</span>
+                            <span></span>
+                        </div>
+                        <span class="queue-time"></span>
+                    </li>
+                    <li class="queue-item">
+                        <div class="queue-info">
+                            <span class="queue-number">#002</span>
+                            <span></span>
+                        </div>
+                        <span class="queue-time"></span>
+                    </li>
+                    <li class="queue-item">
+                        <div class="queue-info">
+                            <span class="queue-number">#003</span>
+                            <span></span>
+                        </div>
+                        <span class="queue-time"></span>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
