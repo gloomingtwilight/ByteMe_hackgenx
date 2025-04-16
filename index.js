@@ -1,7 +1,7 @@
 
 
 const http=require('http'); 
-const server=http.createServer((req,resizeBy)=>
+const server=http.createServer((req,res)=>
     {   if(req.url==='/profile'){
         res.end("The profile page"); 
     }if(req.url==='/about'){
@@ -10,4 +10,4 @@ const server=http.createServer((req,resizeBy)=>
 
     }); 
 
-    server.listen(3001)
+    server.listen(3000)

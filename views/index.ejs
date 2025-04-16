@@ -13,12 +13,12 @@
         <div class="login-container">
             <div class="login-box">
                 <div class="text-center mb-4">
-                    <img src="../assets/images/premedix-logo.png" alt="Premedix Logo" class="login-logo">
+                    
                     <h2 class="mb-3">Department Login</h2>
                     <p class="text-muted">Please enter your department credentials</p>
                 </div>
 
-                <form id="departmentLoginForm" class="login-form">
+                <form id="departmentLoginForm" class="login-form" action="/dashboard" method="post">
                     <div class="mb-3">
                         
                         <input type="text" name="username"  class="form-control" id="email" placeholder="Enter your name" required>
@@ -31,38 +31,16 @@
                      
                         <input type="password" name="password" class="form-control" id="password" placeholder="Enter your password" required>
                     </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe">
-                        
-                    </div>
+                    
                     <div class="d-grid gap-2">
                         <button type="submit" class="btn btn-primary">Login</button>
-                        <a href="login.html" class="btn btn-secondary">Back to Login Options</a>
+                        
                     </div>
                 </form>
-
-                <div class="text-center mt-4">
-                    <p class="mb-0">
-                        <a href="../index.html" class="text-muted">
-                            <i class='bx bx-arrow-back'></i> Back to Home
-                        </a>
-                    </p>
-                </div>
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('departmentLoginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const departmentId = document.getElementById('departmentId').value;
-            const password = document.getElementById('password').value;
-            const rememberMe = document.getElementById('rememberMe').checked;
-            
-            
-            window.location.href = 'department-dashboard.html';
-        });
-    </script>
+    <script src="/assets/index.js"></script>
 </body>
 </html> 
