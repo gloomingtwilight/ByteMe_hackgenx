@@ -113,3 +113,4 @@ app.post('/add-user', async (req, res) => {
 app.listen(4000, () => {
     console.log('Server is running on http://localhost:4000');
 });
+
