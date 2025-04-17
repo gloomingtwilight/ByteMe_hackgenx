@@ -5,8 +5,10 @@
 ## Overview
 ByteMe HackGenX is a hospital management system designed to streamline operations such as user management, equipment tracking, blood bank management, and alert monitoring. This system provides an admin dashboard and department-specific dashboards for efficient management.
 
-![alt text](image.png)
-![alt text](image-1.png)
+![WhatsApp Image 2025-04-17 at 05 13 12_5bc62d3b](https://github.com/user-attachments/assets/7ed0650e-269f-4db0-a56e-e9043950a7a3)
+![WhatsApp Image 2025-04-17 at 05 14 11_0316968b](https://github.com/user-attachments/assets/4d563a9e-ce16-4c02-9e33-4219f32d1e4f)
+
+
 ## Features
 - **Admin Dashboard**: Manage departments, users, and equipment.
 - **Department Dashboard**: Track staff, schedules, and equipment status.
@@ -80,6 +82,8 @@ Navigate to /bloodbank to monitor and manage blood stock.
 
 Alerts:
 Navigate to /alerts to view maintenance alerts.
+
+![WhatsApp Image 2025-04-17 at 09 03 44_2779b2f5](https://github.com/user-attachments/assets/6ac6ae5f-1b82-429c-a5ea-e9ee81a969e0)
 
 
 Resources for AI Model:-
