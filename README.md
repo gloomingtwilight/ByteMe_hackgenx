@@ -21,7 +21,7 @@ ByteMe HackGenX is a hospital management system designed to streamline operation
    git clone <repository-url>
    cd ByteMe_hackgenx-main
 
-Install dependencies:
+2.Install dependencies:
 
  npm install
 
@@ -32,10 +32,9 @@ Install dependencies:
  http://localhost:4000
 
  
-GitHub Copilot
-Here is a basic README.md file for your project:
 
-Install dependencies:
+
+3.Install dependencies:
 
 Start the MongoDB server: Ensure MongoDB is running locally or update the connection string in config/db.js.
 
