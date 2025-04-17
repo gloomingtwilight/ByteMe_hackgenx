@@ -84,6 +84,7 @@ Alerts:
 Navigate to /alerts to view maintenance alerts.
 
 ![WhatsApp Image 2025-04-17 at 09 03 44_2779b2f5](https://github.com/user-attachments/assets/6ac6ae5f-1b82-429c-a5ea-e9ee81a969e0)
+![WhatsApp Image 2025-04-17 at 12 00 40_0fef1871](https://github.com/user-attachments/assets/513058fb-e549-4ed1-bf59-f4ce47ce5515)
 
 
 Resources for AI Model:-
